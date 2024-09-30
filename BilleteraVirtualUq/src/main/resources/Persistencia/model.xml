@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="22.0.1" class="java.beans.XMLDecoder">
+ <object class="com.luisdeveloper.billeteravirtualuq.model.BilleteraVirtualUq" id="BilleteraVirtualUq0">
+  <void property="listaCuentas">
+   <void method="add">
+    <object class="com.luisdeveloper.billeteravirtualuq.model.Cuenta">
+     <void property="idCuenta">
+      <string>123456</string>
+     </void>
+     <void property="nombreBanco">
+      <string>123</string>
+     </void>
+     <void property="numeroCuenta">
+      <string>Bank</string>
+     </void>
+     <void property="tipoCuenta">
+      <string>Ahorros</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="com.luisdeveloper.billeteravirtualuq.model.Cuenta">
+     <void property="idCuenta">
+      <string>46236326</string>
+     </void>
+     <void property="nombreBanco">
+      <string>BankO</string>
+     </void>
+     <void property="numeroCuenta">
+      <string>456</string>
+     </void>
+     <void property="tipoCuenta">
+      <string>Corriente</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="com.luisdeveloper.billeteravirtualuq.model.Cuenta">
+     <void property="idCuenta">
+      <string>11232444</string>
+     </void>
+     <void property="nombreBanco">
+      <string>GrupoAval</string>
+     </void>
+     <void property="numeroCuenta">
+      <string>789</string>
+     </void>
+     <void property="tipoCuenta">
+      <string>Ahorros</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="com.luisdeveloper.billeteravirtualuq.model.Cuenta">
+     <void property="idCuenta">
+      <string>1234569898</string>
+     </void>
+     <void property="nombreBanco">
+      <string>Bank</string>
+     </void>
+     <void property="numeroCuenta">
+      <string>123</string>
+     </void>
+     <void property="tipoCuenta">
+      <string>Ahorros</string>
+     </void>
+    </object>
+   </void>
+  </void>
+ </object>
+</java>
