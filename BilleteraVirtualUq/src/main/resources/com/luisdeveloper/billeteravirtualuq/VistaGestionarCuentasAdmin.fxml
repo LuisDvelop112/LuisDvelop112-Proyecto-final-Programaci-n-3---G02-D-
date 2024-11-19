@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luisdeveloper.billeteravirtualuq.viewController.CuentaViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luisdeveloper.billeteravirtualuq.viewController.VistaGestionarCuentasAdminController">
     <children>
         <SplitPane dividerPositions="0.5078347578347577" layoutX="4.0" layoutY="8.0" orientation="VERTICAL" prefHeight="563.0" prefWidth="738.0">
             <items>
@@ -25,8 +25,8 @@
                         <Button fx:id="btnNuevo" layoutX="109.0" layoutY="236.0" mnemonicParsing="false" onAction="#nuevoCuentaAction" prefHeight="27.0" prefWidth="100.0" text="Nuevo" />
                         <Button fx:id="btnAgregar" layoutX="318.0" layoutY="236.0" mnemonicParsing="false" onAction="#agregarCuentaAction" prefHeight="27.0" prefWidth="100.0" text="Agregar" />
                         <Separator layoutX="13.0" layoutY="217.0" prefHeight="2.0" prefWidth="711.0" />
-                  <TextField fx:id="txtTipoCuenta" layoutX="464.0" layoutY="128.0" prefHeight="25.0" prefWidth="251.0" />
-                  <Label layoutX="398.0" layoutY="132.0" text="TipoCuenta:" />
+                    <TextField fx:id="txtTipoCuenta" layoutX="464.0" layoutY="128.0" prefHeight="25.0" prefWidth="251.0" />
+                    <Label layoutX="398.0" layoutY="132.0" text="TipoCuenta:" />
                     </children></AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="603.0">
                     <children>

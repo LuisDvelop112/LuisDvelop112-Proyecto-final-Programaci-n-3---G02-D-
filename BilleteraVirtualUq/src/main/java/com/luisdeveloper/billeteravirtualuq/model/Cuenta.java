@@ -1,8 +1,9 @@
 package com.luisdeveloper.billeteravirtualuq.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Cuenta {
+public class Cuenta implements Serializable{
 
     private String idCuenta;
     private String nombreBanco;
@@ -14,10 +15,6 @@ public class Cuenta {
         this.nombreBanco = nombreBanco;
         this.numeroCuenta = numeroCuenta;
         this.tipoCuenta = tipoCuenta;
-    }
-
-    public Cuenta(){
-
     }
 
     public String getIdCuenta() {
@@ -67,11 +64,8 @@ public class Cuenta {
 
     @Override
     public String toString() {
-        return "Cuenta{" +
-                "idCuenta='" + idCuenta + '\'' +
-                ", nombreBanco='" + nombreBanco + '\'' +
-                ", numeroCuenta='" + numeroCuenta + '\'' +
-                ", tipoCuenta='" + tipoCuenta + '\'' +
-                '}';
+        return "Cuenta [idCuenta=" + idCuenta + ", nombreBanco=" + nombreBanco + ", numeroCuenta=" + numeroCuenta
+                + ", tipoCuenta=" + tipoCuenta;
     }
+
 }

@@ -1,4 +1,7 @@
 package com.luisdeveloper.billeteravirtualuq.mapping.dto;
 
-public class CategoriaDto {
+public record CategoriaDto(
+        String idCategoria,
+        String nombre,
+        String descripcion) {
 }

@@ -1,151 +1,165 @@
 package com.luisdeveloper.billeteravirtualuq.utils;
 
-import com.luisdeveloper.billeteravirtualuq.model.Cuenta;
 import com.luisdeveloper.billeteravirtualuq.model.BilleteraVirtualUq;
+import com.luisdeveloper.billeteravirtualuq.model.Cuenta;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.io.*;
+import java.nio.file.*;
+import java.util.List;
 
 public class Persistencia {
 
-    public static final String RUTA_ARCHIVO_CUENTAS = "src/main/resources/Persistencia/archivoCuentas.txt";
-    public static final String RUTA_ARCHIVO_LOG = "src/main/resources/Persistencia/Log/BilleteraVirtualUqLog.txt";
+    // Rutas de archivos base y específicos
+    public static final String RUTA_BASE = "C:/td/persistencia/";
+    public static final String RUTA_ARCHIVOS = RUTA_BASE + "archivos/";
+    public static final String RUTA_RESPALDO = RUTA_BASE + "respaldo/";
+    public static final String RUTA_LOG = RUTA_BASE + "log/";
 
-    //public static final String RUTA_ARCHIVO_OBJETOS = "co.edu.uniquindio.programacion3/src/main/resources/persistencia/archivoObjetos.txt";
-    public static final String RUTA_ARCHIVO_MODELO_BILLETERAVIRTUALUQ_BINARIO = "src/main/resources/Persistencia/model.dat";
-    public static final String RUTA_ARCHIVO_MODELO_BILLETERAVIRTUALUQ_XML = "src/main/resources/Persistencia/model.xml";
-//	C:\td\persistencia
+    // Archivos de persistencia
+    public static final String ARCHIVO_CUENTAS = RUTA_ARCHIVOS + "cuentas.txt";
+    public static final String ARCHIVO_TRANSACCIONES = RUTA_ARCHIVOS + "Transaccion.txt";
+    public static final String ARCHIVO_LOG = RUTA_LOG + "BilleteraVirtualUqLog.txt";
 
+    // Archivos binarios y XML del modelo
+    public static final String RUTA_ARCHIVO_MODELO_BINARIO = RUTA_BASE + "model.dat";
+    public static final String RUTA_ARCHIVO_MODELO_XML = "C:/td/Persistencia/model.xml";
 
-
-    public static void cargarDatosArchivos(BilleteraVirtualUq billeteraVirtualUq) throws FileNotFoundException, IOException {
-        //cargar archivos empleados
-        ArrayList<Cuenta> cuentasCargados = cargarCuentas();
-        if(cuentasCargados.size() > 0)
-            billeteraVirtualUq.getListaCuentas().addAll(cuentasCargados);
-    }
-
-    /**
-     * Guarda en un archivo de texto todos la información de las personas almacenadas en el ArrayList
-     * @param
-     * @param
-     * @throws IOException
-     */
-    public static void guardarCuentas(ArrayList<Cuenta> listaCuentas) throws IOException {
-        String contenido = "";
-        for(Cuenta cuenta:listaCuentas)
-        {
-            contenido+= cuenta.getIdCuenta()+
-                    ","+cuenta.getNombreBanco()+
-                    ","+cuenta.getNumeroCuenta()+
-                    ","+cuenta.getTipoCuenta()+"\n";
-        }
-        ArchivoUtil.guardarArchivo(RUTA_ARCHIVO_CUENTAS, contenido, false);
-    }
-
-
-//	----------------------LOADS------------------------
+    // ------------------------------ Respaldos ------------------------------
 
     /**
+     * Realiza un respaldo de los archivos de modelo en formato binario y XML.
      *
-     * @param
-     * @param
-     * @return un Arraylist de personas con los datos obtenidos del archivo de texto indicado
-     * @throws FileNotFoundException
-     * @throws IOException
+     * @param billetera objeto BilleteraVirtualUq que contiene los datos.
      */
-    public static ArrayList<Cuenta> cargarCuentas() throws FileNotFoundException, IOException {
-        ArrayList<Cuenta> cuentas =new ArrayList<Cuenta>();
-        ArrayList<String> contenido = ArchivoUtil.leerArchivo(RUTA_ARCHIVO_CUENTAS);
-        String linea="";
-        for (int i = 0; i < contenido.size(); i++)
-        {
-            linea = contenido.get(i);
-            Cuenta cuenta = new Cuenta();
-            cuenta.setIdCuenta(linea.split(",")[0]);
-            cuenta.setNombreBanco(linea.split(",")[1]);
-            cuenta.setNumeroCuenta(linea.split(",")[2]);
-            cuenta.setTipoCuenta(linea.split(",")[3]);
-            cuentas.add(cuenta);
+    public static void respaldarArchivos(BilleteraVirtualUq billetera) {
+
+        // Crear la carpeta de respaldo si no existe
+        if (billetera != null) {
+            try {
+                Files.createDirectories(Paths.get(RUTA_RESPALDO));
+
+                // Respaldar el modelo a archivo binario
+                String nombreBinarioRespaldo = "model_backup_" + obtenerFechaHora() + ".dat";
+                Path archivoBinarioRespaldo = Paths.get(RUTA_RESPALDO + nombreBinarioRespaldo);
+                ArchivoUtil.salvarRecursoSerializado(archivoBinarioRespaldo.toString(), billetera);
+                System.out.println("Respaldo Binario creado: " + nombreBinarioRespaldo);
+
+                // Respaldar el modelo a archivo XML
+                String nombreXmlRespaldo = "model_backup_" + obtenerFechaHora() + ".xml";
+                Path archivoXmlRespaldo = Paths.get(RUTA_RESPALDO + nombreXmlRespaldo);
+                ArchivoUtil.salvarRecursoSerializadoXML(archivoXmlRespaldo.toString(), billetera);
+                System.out.println("Respaldo XML creado: " + nombreXmlRespaldo);
+
+                System.out.println("Archivos respaldados correctamente.");
+            } catch (Exception e) {
+                System.out.println("Error al respaldar archivos: " + e.getMessage());
+            }
+        }else{
+            System.out.println("Error al guardar");
         }
-        return cuentas;
+
     }
 
-
-    public static void guardaRegistroLog(String mensajeLog, int nivel, String accion)
-    {
-        ArchivoUtil.guardarRegistroLog(mensajeLog, nivel, accion, RUTA_ARCHIVO_LOG);
-    }
-
-
-//	----------------------SAVES------------------------
+    // ------------------------------ Guardado y carga de datos
+    // ------------------------------
 
     /**
-     * Guarda en un archivo de texto todos la información de las personas almacenadas en el ArrayList
-     * @param
-     * @param ruta
-     * @throws IOException
+     * Guarda la lista de cuentas en el archivo correspondiente.
+     * 
+     * @param listaCuentas la lista de cuentas a guardar.
+     * @throws IOException si ocurre un error al guardar las cuentas.
      */
-
-    public static void guardarObjetos(ArrayList<Cuenta> listaCuentas, String ruta) throws IOException  {
-        String contenido = "";
-
-        for(Cuenta CuentaAux:listaCuentas) {
-            contenido+= CuentaAux.getIdCuenta()+","+CuentaAux.getNombreBanco()+","+CuentaAux.getNumeroCuenta()+","+CuentaAux.getTipoCuenta()+"\n";
+    public static void guardarCuentas(List<Cuenta> listaCuentas) throws IOException {
+        StringBuilder contenido = new StringBuilder();
+        for (Cuenta cuenta : listaCuentas) {
+            contenido.append(cuenta.getIdCuenta()).append("@@")
+                    .append(cuenta.getNombreBanco()).append("@@")
+                    .append(cuenta.getNumeroCuenta()).append("@@")
+                    .append(cuenta.getTipoCuenta()).append("\n");
         }
-        ArchivoUtil.guardarArchivo(ruta, contenido, true);
+        ArchivoUtil.guardarArchivo(ARCHIVO_CUENTAS, contenido.toString(), false);
     }
 
+    // ------------------------------ Respaldo de Transacciones
+    // ------------------------------
 
-    //------------------------------------SERIALIZACIÓN  y XML
-
-
-    public static BilleteraVirtualUq cargarRecursoBilleteraVirtualUqBinario() {
-
-        BilleteraVirtualUq billeteraVirtualUq = null;
-
-        try {
-            billeteraVirtualUq = (BilleteraVirtualUq)ArchivoUtil.cargarRecursoSerializado(RUTA_ARCHIVO_MODELO_BILLETERAVIRTUALUQ_BINARIO);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return billeteraVirtualUq;
+    /**
+     * Realiza un respaldo de las transacciones a un archivo.
+     *
+     * @throws IOException si ocurre un error al realizar el respaldo.
+     */
+    @SuppressWarnings("unused")
+    private static void respaldarTransacciones() throws IOException {
+        Path origen = Paths.get(ARCHIVO_TRANSACCIONES);
+        String nombreRespaldo = "backup_" + obtenerFechaHora() + ".txt";
+        Path destino = Paths.get(RUTA_RESPALDO + nombreRespaldo);
+        Files.createDirectories(destino.getParent());
+        Files.copy(origen, destino, StandardCopyOption.REPLACE_EXISTING);
     }
 
-    public static void guardarRecursosBilleteraVirtualUqBinario(BilleteraVirtualUq billeteraVirtualUq) {
-        try {
-            ArchivoUtil.salvarRecursoSerializado(RUTA_ARCHIVO_MODELO_BILLETERAVIRTUALUQ_BINARIO, billeteraVirtualUq);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+    /**
+     * Obtiene la fecha y hora actual en formato `ddMMyyyy_HHmmss`.
+     *
+     * @return la fecha y hora formateada.
+     */
+    private static String obtenerFechaHora() {
+        return new java.text.SimpleDateFormat("ddMMyyyy_HHmmss").format(new java.util.Date());
     }
 
+    // ------------------------------ Registro de Logs
+    // ------------------------------
 
-    public static BilleteraVirtualUq cargarRecursosBilleteraVirtualUqXML() {
-
-        BilleteraVirtualUq billeteraVirtualUq = null;
-
-        try {
-            billeteraVirtualUq = (BilleteraVirtualUq)ArchivoUtil.cargarRecursoSerializadoXML(RUTA_ARCHIVO_MODELO_BILLETERAVIRTUALUQ_XML);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        return billeteraVirtualUq;
-
+    /**
+     * Guarda un registro de log en el archivo correspondiente.
+     *
+     * @param mensajeLog el mensaje del log
+     * @param nivel      el nivel del log (1: INFO, 2: WARNING, 3: SEVERE)
+     * @param accion     la acción que se está registrando
+     */
+    public static void guardaRegistroLog(String mensajeLog, int nivel, String accion) {
+        ArchivoUtil.guardarRegistroLog(mensajeLog, nivel, accion, ARCHIVO_LOG);
     }
 
+    // ------------------------------ Guardado y carga de recursos binarios y XML
+    // ------------------------------
 
-    public static void guardarRecursoBilleteraVirtualUqXML(BilleteraVirtualUq billeteraVirtualUq) {
+    /**
+     * Carga el recurso binario desde el archivo.
+     *
+     * @return el objeto BilleteraVirtualUq cargado desde el archivo binario
+     * @throws Exception si ocurre un error al cargar el archivo
+     */
+    public static BilleteraVirtualUq cargarRecursoBinario() throws Exception {
+        return (BilleteraVirtualUq) ArchivoUtil.cargarRecursoSerializado(RUTA_ARCHIVO_MODELO_BINARIO);
+    }
 
-        try {
-            ArchivoUtil.salvarRecursoSerializadoXML(RUTA_ARCHIVO_MODELO_BILLETERAVIRTUALUQ_XML, billeteraVirtualUq);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+    /**
+     * Guarda el recurso binario en el archivo.
+     *
+     * @param billeteraVirtualUq el objeto a guardar
+     * @throws Exception si ocurre un error al guardar el archivo
+     */
+    public static void guardarRecursoBinario(BilleteraVirtualUq billeteraVirtualUq) throws Exception {
+        ArchivoUtil.salvarRecursoSerializado(RUTA_ARCHIVO_MODELO_BINARIO, billeteraVirtualUq);
+    }
+
+    /**
+     * Carga el recurso XML desde el archivo.
+     *
+     * @return el objeto BilleteraVirtualUq cargado desde el archivo XML
+     * @throws IOException si ocurre un error al cargar el archivo XML
+     */
+    public static BilleteraVirtualUq cargarRecursoXML() throws IOException {
+        return (BilleteraVirtualUq) ArchivoUtil.cargarRecursoSerializadoXML(RUTA_ARCHIVO_MODELO_XML);
+    }
+
+    /**
+     * Guarda el recurso XML en el archivo.
+     *
+     * @param billeteraVirtualUq el objeto a guardar
+     * @throws IOException si ocurre un error al guardar el archivo XML
+     */
+    public static void guardarRecursoXML(BilleteraVirtualUq billeteraVirtualUq) throws IOException {
+        ArchivoUtil.salvarRecursoSerializadoXML(RUTA_ARCHIVO_MODELO_XML, billeteraVirtualUq);
     }
 }

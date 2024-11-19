@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="22.0.1" class="java.beans.XMLDecoder">
+<java version="22.0.2" class="java.beans.XMLDecoder">
  <object class="com.luisdeveloper.billeteravirtualuq.model.BilleteraVirtualUq" id="BilleteraVirtualUq0">
   <void property="listaCuentas">
    <void method="add">
@@ -8,10 +8,10 @@
       <string>123456</string>
      </void>
      <void property="nombreBanco">
-      <string>123</string>
+      <string>Bank</string>
      </void>
      <void property="numeroCuenta">
-      <string>Bank</string>
+      <string>123</string>
      </void>
      <void property="tipoCuenta">
       <string>Ahorros</string>
@@ -53,16 +53,32 @@
    <void method="add">
     <object class="com.luisdeveloper.billeteravirtualuq.model.Cuenta">
      <void property="idCuenta">
-      <string>1234569898</string>
+      <string>dsdsa</string>
      </void>
      <void property="nombreBanco">
-      <string>Bank</string>
+      <string>dasdsa</string>
      </void>
      <void property="numeroCuenta">
-      <string>123</string>
+      <string>dsads</string>
      </void>
      <void property="tipoCuenta">
-      <string>Ahorros</string>
+      <string>adsdsa</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="com.luisdeveloper.billeteravirtualuq.model.Cuenta">
+     <void property="idCuenta">
+      <string>1234567</string>
+     </void>
+     <void property="nombreBanco">
+      <string>1005133143</string>
+     </void>
+     <void property="numeroCuenta">
+      <string>Banco de Bogota</string>
+     </void>
+     <void property="tipoCuenta">
+      <string>ahorros</string>
      </void>
     </object>
    </void>

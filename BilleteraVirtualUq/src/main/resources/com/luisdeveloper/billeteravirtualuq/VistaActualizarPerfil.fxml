@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luisdeveloper.billeteravirtualuq.viewController.VistaActualizarPerfilController">
+   <children>
+      <Button layoutX="256.0" layoutY="313.0" mnemonicParsing="false" onAction="#ActualizarDatos" text="Actualizar" />
+      <TextField fx:id="Nombre" layoutX="364.0" layoutY="62.0" />
+      <TextField fx:id="Apellido" layoutX="364.0" layoutY="102.0" />
+      <TextField fx:id="Correo" layoutX="364.0" layoutY="145.0" />
+      <TextField fx:id="Telefono" layoutX="364.0" layoutY="188.0" />
+      <Text layoutX="88.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+      <TextField fx:id="Direccion" layoutX="364.0" layoutY="225.0" />
+      <Text layoutX="88.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido" />
+      <Text layoutX="87.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo" />
+      <Text layoutX="87.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" />
+      <Text layoutX="87.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion" />
+   </children>
+</AnchorPane>

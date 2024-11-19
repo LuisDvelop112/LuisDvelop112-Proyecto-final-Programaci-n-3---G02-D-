@@ -4,6 +4,9 @@ module com.luisdeveloper.billeteravirtualuq {
     requires org.mapstruct;
     requires java.desktop;
     requires java.logging;
+    requires com.rabbitmq.client;
+    requires java.sql;
+
 
 
     opens com.luisdeveloper.billeteravirtualuq to javafx.fxml;
@@ -14,6 +17,5 @@ module com.luisdeveloper.billeteravirtualuq {
     exports com.luisdeveloper.billeteravirtualuq.mapping.dto;
     exports com.luisdeveloper.billeteravirtualuq.mapping.mappers;
     exports com.luisdeveloper.billeteravirtualuq.model;
-
 
 }

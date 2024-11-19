@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <!-- TableView para mostrar las transacciones -->
+      <TableView fx:id="tableTransacciones" layoutX="42.0" layoutY="155.0" prefHeight="200.0" prefWidth="460.0">
+        <columns>
+          <!-- Columna para la Fecha de la transacción -->
+          <TableColumn fx:id="tcFecha" prefWidth="100.0" text="Fecha" />
+          <!-- Columna para el Tipo de transacción -->
+          <TableColumn fx:id="tcTipo" prefWidth="100.0" text="Tipo" />
+          <!-- Columna para la Categoría de la transacción -->
+          <TableColumn fx:id="tcCategoria" prefWidth="100.0" text="Categoría" />
+          <!-- Columna para el Monto de la transacción -->
+          <TableColumn fx:id="tcMonto" prefWidth="159.0" text="Monto" />
+        </columns>
+      </TableView>
+
+      <!-- ComboBox para seleccionar tipo de transacción -->
+      <ComboBox fx:id="comboTipo" layoutX="59.0" layoutY="44.0" prefWidth="150.0" />
+      <!-- ComboBox para seleccionar categoría de transacción -->
+      <ComboBox fx:id="comboCategoria" layoutX="274.0" layoutY="44.0" prefWidth="150.0" />
+      <!-- Campos de texto para filtrar por fechas -->
+      <TextField fx:id="txtFechaInicio" layoutX="476.0" layoutY="44.0" prefWidth="100.0" promptText="Fecha Inicio" />
+      <TextField fx:id="txtFechaFin" layoutX="476.0" layoutY="72.0" prefWidth="100.0" promptText="Fecha Fin" />
+
+      <!-- Botón para filtrar por categoría -->
+      <Button layoutX="59.0" layoutY="72.0" mnemonicParsing="false" onAction="#filtrarCategoria" text="Filtrar por Categoría" />
+      <!-- Botón para filtrar por tipo -->
+      <Button layoutX="274.0" layoutY="72.0" mnemonicParsing="false" onAction="#filtrarTipo" text="Filtrar por Tipo" />
+      <!-- Botón para filtrar por fechas -->
+      <Button layoutX="476.0" layoutY="100.0" mnemonicParsing="false" onAction="#filtrarFecha" text="Filtrar por Fecha" />
+   </children>
+</AnchorPane>

@@ -32,3 +32,41 @@ sept 27, 2024 6:44:54 P. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoU
 INFORMACIÓN: agregarCuenta,Se agrego la cuenta 1234569898,2024-09-27
 sept 29, 2024 9:05:16 P. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
 INFORMACIÓN: inicioSesión,Inicio de sesión,2024-09-29
+oct 12, 2024 1:06:41 A. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-12
+oct 13, 2024 10:57:15 A. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-13
+oct 13, 2024 10:57:56 A. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: agregarCuenta,Se agrego la cuenta 2711,2024-10-13
+oct 13, 2024 12:24:06 P. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: eliminarCuenta,Se elimino la cuenta 2711,2024-10-13
+oct 13, 2024 12:24:16 P. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: agregarCuenta,Se agrego la cuenta Ingrese Id de la cuenta,2024-10-13
+oct 13, 2024 12:29:26 P. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: actualizarCuenta,Se actualizo la cuenta 123456,2024-10-13
+oct 13, 2024 12:29:35 P. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: actualizarCuenta,Se actualizo la cuenta 11232444,2024-10-13
+oct 13, 2024 12:54:38 P. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-13
+oct 13, 2024 12:55:01 P. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: agregarCuenta,Se agrego la cuenta 123,2024-10-13
+oct 14, 2024 10:37:45 A. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-14
+oct 14, 2024 10:38:19 A. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: agregarCuenta,Se agrego la cuenta 123,2024-10-14
+oct 14, 2024 10:41:48 A. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-14
+oct 14, 2024 10:41:58 A. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: agregarCuenta,Se agrego la cuenta 1223,2024-10-14
+oct 14, 2024 12:02:56 P. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-14
+oct 14, 2024 12:03:04 P. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: agregarCuenta,Se agrego la cuenta 123,2024-10-14
+oct 15, 2024 5:40:13 P. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-15
+oct 15, 2024 7:08:26 P. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-15
+oct 16, 2024 10:03:55 A. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: inicioSesión,Inicio de sesión,2024-10-16
+oct 16, 2024 10:04:07 A. M. com.luisdeveloper.billeteravirtualuq.utils.ArchivoUtil guardarRegistroLog
+INFO: agregarCuenta,Se agrego la cuenta dsdsa,2024-10-16

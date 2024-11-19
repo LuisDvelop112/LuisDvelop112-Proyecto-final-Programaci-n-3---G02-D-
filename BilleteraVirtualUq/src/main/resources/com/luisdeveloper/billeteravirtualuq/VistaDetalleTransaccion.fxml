@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="394.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luisdeveloper.billeteravirtualuq.viewController.VistaDetalleTransaccionesController">
+    <children>
+        
+        <!-- Tabla de Transacciones -->
+        <TableView fx:id="tablaTransacciones" layoutX="20.0" layoutY="50.0" prefHeight="300.0" prefWidth="760.0">
+            <columns>
+                <TableColumn fx:id="columnaFecha" prefWidth="250.0" text="Fecha" />
+                <TableColumn fx:id="columnaMonto" prefWidth="250.0" text="Monto" />
+                <TableColumn fx:id="columnaDescripcion" prefWidth="250.0" text="Descripción" />
+            </columns>
+        </TableView>
+
+        <!-- Saldo -->
+        <HBox layoutX="20.0" layoutY="355.0" spacing="10.0" />
+
+        <!-- Botón Cargar -->
+        <Button layoutX="374.0" layoutY="355.0" mnemonicParsing="false" onAction="#cargarTransacciones" text="Cargar" />
+         <TextField fx:id="txtSaldo" editable="false" layoutX="20.0" layoutY="14.0" prefWidth="250.0" promptText="Saldo" />
+    </children>
+</AnchorPane>
