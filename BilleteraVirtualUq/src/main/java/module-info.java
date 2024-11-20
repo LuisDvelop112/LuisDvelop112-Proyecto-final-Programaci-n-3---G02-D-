@@ -6,8 +6,8 @@ module com.luisdeveloper.billeteravirtualuq {
     requires java.logging;
     requires com.rabbitmq.client;
     requires java.sql;
-
-
+    requires java.net.http;
+    requires com.fasterxml.jackson.databind;
 
     opens com.luisdeveloper.billeteravirtualuq to javafx.fxml;
     exports com.luisdeveloper.billeteravirtualuq;
@@ -17,5 +17,4 @@ module com.luisdeveloper.billeteravirtualuq {
     exports com.luisdeveloper.billeteravirtualuq.mapping.dto;
     exports com.luisdeveloper.billeteravirtualuq.mapping.mappers;
     exports com.luisdeveloper.billeteravirtualuq.model;
-
 }

@@ -39,11 +39,41 @@ public class VistaPrincipalController {
         } catch (IOException e) {
             e.printStackTrace();
             mostrarAlerta(Alert.AlertType.ERROR, "Error",
-                    "No se pudo abrir la ventana de registro. Verifique la ruta del archivo FXML.");
-        } catch (NullPointerException e) {
+                    "No se pudo abrir la ventana 'Editar Perfil'. Verifique la ruta del archivo FXML.");
+        }
+    }
+
+    @FXML
+    private void crearReportes(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/luisdeveloper/billeteravirtualuq/VistaCrearReportes.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Crear Reportes");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
             e.printStackTrace();
             mostrarAlerta(Alert.AlertType.ERROR, "Error",
-                    "Archivo FXML no encontrado. Verifique la ubicación de RegistroView.fxml.");
+                    "No se pudo abrir la ventana 'Crear Reportes'. Verifique la ruta del archivo FXML.");
+        }
+    }
+
+    @FXML
+    private void chatBot(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/luisdeveloper/billeteravirtualuq/VistaChatBot.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Chat Bot");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarAlerta(Alert.AlertType.ERROR, "Error",
+                    "No se pudo abrir la ventana 'Chat Bot'. Verifique la ruta del archivo FXML.");
         }
     }
 
@@ -63,15 +93,16 @@ public class VistaPrincipalController {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/com/luisdeveloper/billeteravirtualuq/VistaAgregarSaldo.fxml"));
             Parent root = loader.load();
-            VistaAgregarSaldoController vistaAgregarSaldoController = loader.getController();
-            vistaAgregarSaldoController.setIdUsuario(idUsuario); // Se pasa el ID de usuario
+            VistaAgregarSaldoController controller = loader.getController();
+            controller.setIdUsuario(idUsuario);
             Stage stage = new Stage();
             stage.setTitle("Agregar Saldo");
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            mostrarAlerta(Alert.AlertType.ERROR, "Error", "No se pudo abrir la ventana para agregar saldo.");
+            mostrarAlerta(Alert.AlertType.ERROR, "Error",
+                    "No se pudo abrir la ventana 'Agregar Saldo'. Verifique la ruta del archivo FXML.");
         }
     }
 
@@ -89,11 +120,8 @@ public class VistaPrincipalController {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            mostrarAlerta(Alert.AlertType.ERROR, "Error", "No se pudo abrir la ventana para retirar saldo.");
-        } catch (NullPointerException e) {
-            e.printStackTrace();
             mostrarAlerta(Alert.AlertType.ERROR, "Error",
-                    "Archivo FXML no encontrado. Verifique la ubicación de VistaRetirarSaldo.fxml.");
+                    "No se pudo abrir la ventana 'Retirar Saldo'. Verifique la ruta del archivo FXML.");
         }
     }
 
@@ -106,6 +134,7 @@ public class VistaPrincipalController {
             VistaGestionarTransaccionesController controller = loader.getController();
             controller.setIdUsuario(idUsuario); // Se pasa el ID de usuario
             controller.setearSaldo(idUsuario);
+            controller.cargarTransacciones();
             Stage stage = new Stage();
             stage.setTitle("gestionar Transacciones");
             stage.setScene(new Scene(root));
@@ -128,6 +157,7 @@ public class VistaPrincipalController {
             Parent root = loader.load();
             VistaGestionarPresupuestosController controller = loader.getController();
             controller.setIdUsuario(idUsuario); // Se pasa el ID de usuario
+            controller.cargarTablaPresupuestos();
             Stage stage = new Stage();
             stage.setTitle("Gestionar Presupuestos");
             stage.setScene(new Scene(root));
@@ -152,21 +182,21 @@ public class VistaPrincipalController {
             controller.inicializar(idUsuario);
             controller.setIdUsuario(idUsuario); // Se pasa el ID de usuario
             Stage stage = new Stage();
-            stage.setTitle("Gestionar Presupuestos");
+            stage.setTitle("Gestionar Cuentas");
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            mostrarAlerta(Alert.AlertType.ERROR, "Error", "No se pudo abrir la ventana de gestión de presupuestos.");
+            mostrarAlerta(Alert.AlertType.ERROR, "Error", "No se pudo abrir la ventana de gestion de Cuentas.");
         } catch (NullPointerException e) {
             e.printStackTrace();
             mostrarAlerta(Alert.AlertType.ERROR, "Error",
-                    "Archivo FXML no encontrado. Verifique la ubicación de VistaGestionarPresupuestos.fxml.");
+                    "Archivo FXML no encontrado. Verifique la ubicación de VistaGestionarCuentas.fxml.");
         }
     }
 
     @FXML
-    protected void consultarTransacciones(){
+    protected void consultarTransacciones() {
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/com/luisdeveloper/billeteravirtualuq/VistaDetalleTransaccion.fxml"));
@@ -174,38 +204,36 @@ public class VistaPrincipalController {
             VistaDetalleTransaccionesController controller = loader.getController();
             controller.setIdUsuario(idUsuario); // Se pasa el ID de usuario
             Stage stage = new Stage();
-            stage.setTitle("Gestionar Presupuestos");
+            stage.setTitle("Gestionar Transacciones");
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            mostrarAlerta(Alert.AlertType.ERROR, "Error", "No se pudo abrir la ventana de gestión de presupuestos.");
+            mostrarAlerta(Alert.AlertType.ERROR, "Error", "No se pudo abrir la ventana de gestión de Transacciones.");
         } catch (NullPointerException e) {
             e.printStackTrace();
             mostrarAlerta(Alert.AlertType.ERROR, "Error",
-                    "Archivo FXML no encontrado. Verifique la ubicación de VistaGestionarPresupuestos.fxml.");
+                    "Archivo FXML no encontrado. Verifique la ubicación de VistaConsultarTransacciones.fxml.");
         }
     }
 
     @FXML
-    protected void crearCategoria(){
+    protected void crearCategoria() {
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/com/luisdeveloper/billeteravirtualuq/VistaCrearCategoria.fxml"));
             Parent root = loader.load();
-            VistaDetalleTransaccionesController controller = loader.getController();
-            controller.setIdUsuario(idUsuario); // Se pasa el ID de usuario
             Stage stage = new Stage();
-            stage.setTitle("Gestionar Presupuestos");
+            stage.setTitle("Crear Categoria");
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            mostrarAlerta(Alert.AlertType.ERROR, "Error", "No se pudo abrir la ventana de gestión de presupuestos.");
+            mostrarAlerta(Alert.AlertType.ERROR, "Error", "No se pudo abrir la ventana de creacion de Categorias.");
         } catch (NullPointerException e) {
             e.printStackTrace();
             mostrarAlerta(Alert.AlertType.ERROR, "Error",
-                    "Archivo FXML no encontrado. Verifique la ubicación de VistaGestionarPresupuestos.fxml.");
+                    "Archivo FXML no encontrado. Verifique la ubicación de VistaCrearCategoria.fxml.");
         }
     }
 
@@ -226,9 +254,8 @@ public class VistaPrincipalController {
     }
 
     @FXML
-    private void guardarDatos(){
+    private void guardarDatos() throws Exception {
         usuarioController.guardarDatos();
     }
 
-    
 }

@@ -1,15 +1,21 @@
 package com.luisdeveloper.billeteravirtualuq.viewController;
 
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import com.luisdeveloper.billeteravirtualuq.controller.TransaccionController;
 import com.luisdeveloper.billeteravirtualuq.controller.UsuarioController;
-import com.luisdeveloper.billeteravirtualuq.mapping.dto.UsuarioDto;
+import com.luisdeveloper.billeteravirtualuq.model.Transaccion;
 import com.luisdeveloper.billeteravirtualuq.mapping.dto.CategoriaDto;
 import com.luisdeveloper.billeteravirtualuq.mapping.dto.TransaccionDto;
+import com.luisdeveloper.billeteravirtualuq.mapping.dto.UsuarioDto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class VistaGestionarTransaccionesController {
 
@@ -34,6 +40,15 @@ public class VistaGestionarTransaccionesController {
     @FXML
     private TextField txtcuentaDestino;
 
+    @FXML
+    private TableView<Transaccion> tableTransacciones; // Tabla de transacciones
+    @FXML
+    private TableColumn<Transaccion, String> columTipoTransaccion;
+    @FXML
+    private TableColumn<Transaccion, String> columFecha;
+    @FXML
+    private TableColumn<Transaccion, Double> columMonto;
+
     // Método para establecer el ID del usuario
     public void setIdUsuario(String idUsuario) {
         this.idUsuario = idUsuario;
@@ -43,18 +58,39 @@ public class VistaGestionarTransaccionesController {
     // Inicialización del controlador
     @FXML
     public void initialize() {
-        // Verificar que idUsuario no sea nulo antes de usarlo
-        if (idUsuario != null) {
-            UsuarioDto user = usuarioController.obtenerUsuario(idUsuario);
 
-            if (user != null) {
-                double saldo = usuarioController.obtenerSaldo(idUsuario);
-                txtSaldoActual.setText(String.format("%.2f", saldo)); // Establecer el saldo
+        tableTransacciones.getItems().clear();
+
+        columTipoTransaccion.setCellValueFactory(new PropertyValueFactory<>("tipoTransaccion"));
+        columFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
+        columMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
+
+        cmbTipoTransaccion.getItems().addAll("Retiro", "Depósito", "Transferencia");
+        cmbTipoTransaccion.getSelectionModel().selectFirst();
+
+        
+        List<Transaccion> transacciones = transaccionController.listarTransacciones(idUsuario);
+        if(transacciones != null){
+            tableTransacciones.getItems().addAll(transacciones);
+        }
+
+        tableTransacciones.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                cargarTransacciones();
+            }
+        });
+    }
+
+    public void cargarTransacciones() {
+        if (idUsuario != null) {
+            // Obtener las transacciones directamente desde el controlador
+            List<Transaccion> transacciones = transaccionController.listarTransacciones(idUsuario);
+
+            if (transacciones != null) {
+                // Añadir las transacciones a la tabla cuando estén disponibles
+                tableTransacciones.getItems().setAll(transacciones);
             }
         }
-        System.out.println("VistaGestionarTransaccionesController inicializado correctamente.");
-        cmbTipoTransaccion.getItems().addAll("Retiro", "Depósito", "Transferencia");
-        cmbTipoTransaccion.getSelectionModel().selectFirst(); // Seleccionar el primero por defecto
     }
 
     // Método para manejar el botón "Realizar transacción"
@@ -73,13 +109,14 @@ public class VistaGestionarTransaccionesController {
                 return;
             }
 
-            Double monto;
+            Double monto = Double.parseDouble(txtMontoPresupuesto.getText());
+
             // Crear la transacción basada en la entrada
             TransaccionDto nuevaTransaccion = new TransaccionDto(
                     txtPresupuestoId.getText(),
                     fechaHoraActual,
                     tipoTransaccion,
-                    monto = Double.parseDouble(txtMontoPresupuesto.getText()),
+                    monto,
                     txtDescripcion.getText(),
                     txtcuentaOrigen.getText(),
                     txtcuentaDestino.getText(),
@@ -106,19 +143,18 @@ public class VistaGestionarTransaccionesController {
 
             // Limpiar campos después de agregar la transacción
             limpiarCampos();
+
+            // Recargar las transacciones en la tabla
+            cargarTransacciones();
+
+            setearSaldo(idUsuario);
+
             System.out.println("Transacción añadida correctamente.");
         } catch (NumberFormatException e) {
             System.out.println("Error: El monto debe ser un número válido.");
         } catch (Exception e) {
             System.out.println("Error al realizar la transacción: " + e.getMessage());
         }
-    }
-
-    // Método para manejar el botón "Eliminar"
-    @FXML
-    private void eliminarTransaccion() {
-        System.out.println("Botón 'Eliminar' presionado.");
-        // Lógica para eliminar transacción, si es necesario (ya no depende de la tabla)
     }
 
     // Método para limpiar los campos después de agregar una transacción
@@ -130,15 +166,8 @@ public class VistaGestionarTransaccionesController {
         txtcuentaDestino.clear();
     }
 
-    @FXML
-    private void agregarCategoria() {
-        System.out.println("Botón 'Agregar Categoría' presionado.");
-        // Lógica en desarrollo
-    }
-
     public void setearSaldo(String idUsuario) {
         double saldo = usuarioController.obtenerSaldo(idUsuario);
         txtSaldoActual.setText(String.format("%.2f", saldo));
     }
-
 }

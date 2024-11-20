@@ -92,5 +92,5 @@ public interface IModelFactoryService {
 
     public List<Presupuesto> devolverPresupuestos(String idUsuario);
 
-    public void guardarDatos();
+    public void guardarDatos() throws Exception;
 }

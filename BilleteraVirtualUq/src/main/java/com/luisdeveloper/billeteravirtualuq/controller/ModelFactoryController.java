@@ -37,11 +37,12 @@ public class ModelFactoryController implements IModelFactoryService {
     public ModelFactoryController() {
         try {
             billeteraVirtualUq = Persistencia.cargarRecursoBinario();
+            guardarDatos();
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+            
         guardarDatos(billeteraVirtualUq);
         if (billeteraVirtualUq != null) {
             Persistencia.respaldarArchivos(billeteraVirtualUq);
@@ -610,7 +611,7 @@ public boolean actualizarTransaccion(String idUsuario, String idTransaccion, Tra
         this.billeteraVirtualUq = billeteraVirtualUq;
     }
 
-    public void guardarDatos(){
-        Persistencia.respaldarArchivos(billeteraVirtualUq);
+    public void guardarDatos() throws Exception{
+        Persistencia.guardarRecursoBinario(billeteraVirtualUq);
     }
 }

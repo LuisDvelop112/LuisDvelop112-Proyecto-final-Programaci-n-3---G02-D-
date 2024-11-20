@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+
+<VBox spacing="10" alignment="CENTER" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.luisdeveloper.billeteravirtualuq.viewController.ChatBotController" >
+    <!-- Área de chat -->
+    <TextArea fx:id="chatArea" editable="false" wrapText="true" prefHeight="300" prefWidth="400" promptText="Esperando mensajes..." />
+    
+    <!-- Contenedor para la caja de texto y el botón -->
+    <HBox spacing="10" alignment="CENTER">
+        <!-- Campo para ingresar texto -->
+        <TextField fx:id="inputField" promptText="Escribe tu mensaje aquí..." prefWidth="300"/>
+        
+        <!-- Botón para enviar el mensaje -->
+        <Button text="Enviar" fx:id="sendButton" onAction="#procesarEntradaUsuario" />
+    </HBox>
+</VBox>

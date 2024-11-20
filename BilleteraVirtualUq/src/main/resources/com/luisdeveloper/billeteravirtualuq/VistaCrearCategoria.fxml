@@ -5,10 +5,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luisdeveloper.billeteravirtualuq.viewController.VistaCrearCategoriaController">
    <children>
-      <Button layoutX="243.0" layoutY="299.0" mnemonicParsing="false" text="Agregar Categoria" />
+      <Button layoutX="243.0" layoutY="299.0" mnemonicParsing="false" onAction="#crearCategoria" text="Agregar Categoria" />
       <Text layoutX="102.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Id" />
       <TextField fx:id="id_categoria" layoutX="367.0" layoutY="81.0" />
       <TextField fx:id="nombre" layoutX="367.0" layoutY="122.0" />

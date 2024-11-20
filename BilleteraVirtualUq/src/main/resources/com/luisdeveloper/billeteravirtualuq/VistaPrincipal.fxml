@@ -13,5 +13,7 @@
       <Button layoutX="228.0" layoutY="276.0" mnemonicParsing="false" onAction="#consultarTransacciones" text="Consultar Transacciones" />
       <Button layoutX="251.0" layoutY="329.0" mnemonicParsing="false" onAction="#crearCategoria" text="Crear Categoria" />
       <Button layoutX="432.0" layoutY="181.0" mnemonicParsing="false" onAction="#guardarDatos" text="Guardar Datos" />
+      <Button layoutX="66.0" layoutY="181.0" mnemonicParsing="false" onAction="#crearReportes" text="Generar Reportes" />
+      <Button layoutX="90.0" layoutY="227.0" mnemonicParsing="false" onAction="#chatBot" text="Chat Bot" />
    </children>
 </AnchorPane>

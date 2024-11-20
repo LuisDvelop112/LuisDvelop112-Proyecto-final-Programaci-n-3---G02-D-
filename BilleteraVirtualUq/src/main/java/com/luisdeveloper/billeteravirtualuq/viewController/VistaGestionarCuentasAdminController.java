@@ -21,7 +21,7 @@ import javafx.event.ActionEvent;
 
 public class VistaGestionarCuentasAdminController {
 
-    CuentaController  cuentaController = new CuentaController();
+    CuentaController cuentaController = new CuentaController();
     UsuarioController usuarioController = new UsuarioController();
 
     @FXML
@@ -82,20 +82,21 @@ public class VistaGestionarCuentasAdminController {
         tableCuentas.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 llenarCamposConCuenta(newValue);
-                            }
-                        });
-                    }
-                
-                    private void llenarCamposConCuenta(Cuenta newValue) {
-                        // TODO Auto-generated method stub
-                        throw new UnsupportedOperationException("Unimplemented method 'llenarCamposConCuenta'");
-                    }
-                
-                    @FXML
+            }
+        });
+    }
+
+    private void llenarCamposConCuenta(Cuenta newValue) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'llenarCamposConCuenta'");
+    }
+
+    @FXML
     void agregarCuentaAction(ActionEvent event) {
         try {
             // Crear nueva cuenta con los datos de los campos de texto
-            CuentaDto nuevaCuenta = new CuentaDto(txtCuentaId.getText(), txtNombreBanco.getText(), txtNumeroCuenta.getText(), txtTipoCuenta.getText());
+            CuentaDto nuevaCuenta = new CuentaDto(txtCuentaId.getText(), txtNombreBanco.getText(),
+                    txtNumeroCuenta.getText(), txtTipoCuenta.getText());
             cuentaController.agregarCuentasUsuario(txtCuentaId.getText(), nuevaCuenta);
             limpiarCampos();
             inicializar(); // Recargar la tabla
@@ -113,7 +114,9 @@ public class VistaGestionarCuentasAdminController {
             cuentaSeleccionada.setNumeroCuenta(txtNumeroCuenta.getText());
             cuentaSeleccionada.setTipoCuenta(txtTipoCuenta.getText());
             CuentaDto nuevaCuenta = construirCuentaDto();
-            cuentaController.actualizarCuenta(txtCuentaId.getText(), txtCuentaId.getText(), nuevaCuenta); // Asume que existe este método
+            cuentaController.actualizarCuenta(txtCuentaId.getText(), txtCuentaId.getText(), nuevaCuenta); // Asume que
+                                                                                                          // existe este
+                                                                                                          // método
             tableCuentas.refresh(); // Actualizar tabla
             limpiarCampos();
         } else {
@@ -157,11 +160,11 @@ public class VistaGestionarCuentasAdminController {
         txtTipoCuenta.clear();
     }
 
-    private CuentaDto construirCuentaDto(){
+    private CuentaDto construirCuentaDto() {
         return new CuentaDto(txtCuentaId.getText(),
-        txtNombreBanco.getText(),
-        txtNumeroCuenta.getText(), 
-        txtTipoCuenta.getText());
+                txtNombreBanco.getText(),
+                txtNumeroCuenta.getText(),
+                txtTipoCuenta.getText());
     }
 
     private void mostrarAlerta(String titulo, String mensaje, Alert.AlertType tipoAlerta) {

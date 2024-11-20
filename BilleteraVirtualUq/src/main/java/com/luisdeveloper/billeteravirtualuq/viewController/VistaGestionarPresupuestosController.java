@@ -117,6 +117,7 @@ public class VistaGestionarPresupuestosController {
         } catch (NumberFormatException e) {
             mostrarMensaje("Error", "Por favor ingrese un valor numérico válido para el monto.");
         }
+        cargarTablaPresupuestos();
     }
 
     // Acción para el botón "Actualizar"
@@ -152,6 +153,7 @@ public class VistaGestionarPresupuestosController {
         } catch (NumberFormatException e) {
             mostrarMensaje("Error", "Por favor ingrese un valor numérico válido para el monto gastado.");
         }
+        cargarTablaPresupuestos();
     }
 
     // Acción para el botón "Eliminar"
@@ -171,24 +173,6 @@ public class VistaGestionarPresupuestosController {
     }
 
     // Método para cargar los presupuestos en la tabla
-    public void cargarPresupuestos() {
-        // Obtener todos los presupuestos del usuario
-        List<Presupuesto> presupuestos = presupuestoController.devolverPresupuestos(idUsuario);
-
-        // Limpiar la tabla antes de llenarla
-        tablePresupuestos.getItems().clear();
-        System.out.println(presupuestos.get(0).getMontoGastado());
-        // Configurar las columnas de la tabla
-        tcPresupuestoId.setCellValueFactory(new PropertyValueFactory<>("idPresupuesto"));
-        tcNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        tcCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
-        tcMonto.setCellValueFactory(new PropertyValueFactory<>("montoTotal"));
-        tcMontoGastado.setCellValueFactory(new PropertyValueFactory<>("montoGastado"));
-
-        // Añadir los datos a la tabla
-        tablePresupuestos.getItems().addAll(presupuestos);
-        System.out.println("Presupuestos cargados correctamente.");
-    }
 
     // Método para cargar los datos cuando se hace clic en una fila de la tabla
     @FXML
@@ -206,4 +190,35 @@ public class VistaGestionarPresupuestosController {
             MontoPresupuestoGastado.setText(String.valueOf(presupuestoSeleccionado.getMontoGastado()));
         }
     }
+
+    public void cargarTablaPresupuestos() {
+        // Obtener todos los presupuestos del usuario
+        List<Presupuesto> presupuestos = presupuestoController.devolverPresupuestos(idUsuario);
+    
+        // Verificar si la lista de presupuestos es nula o vacía
+        if (presupuestos == null || presupuestos.isEmpty()) {
+            System.out.println("No hay presupuestos disponibles.");
+            return;  // Salir del método si no hay presupuestos para mostrar
+        }
+    
+        // Limpiar la tabla antes de llenarla
+        tablePresupuestos.getItems().clear();
+        
+        // Verificar si el primer presupuesto tiene datos válidos
+        if (presupuestos.get(0) != null) {
+            System.out.println(presupuestos.get(0).getMontoGastado());
+        }
+    
+        // Configurar las columnas de la tabla
+        tcPresupuestoId.setCellValueFactory(new PropertyValueFactory<>("idPresupuesto"));
+        tcNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        tcCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        tcMonto.setCellValueFactory(new PropertyValueFactory<>("montoTotal"));
+        tcMontoGastado.setCellValueFactory(new PropertyValueFactory<>("montoGastado"));
+    
+        // Añadir los datos a la tabla
+        tablePresupuestos.getItems().addAll(presupuestos);
+        System.out.println("Presupuestos cargados correctamente.");
+    }
+    
 }

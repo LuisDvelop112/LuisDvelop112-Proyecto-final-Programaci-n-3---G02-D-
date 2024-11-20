@@ -49,7 +49,7 @@ public class UsuarioController {
         return modelFactoryController.reducirSaldo(idUsuario, nuevoSaldo);
     }
 
-    public void guardarDatos(){
+    public void guardarDatos() throws Exception{
         modelFactoryController.guardarDatos();
     }
     
