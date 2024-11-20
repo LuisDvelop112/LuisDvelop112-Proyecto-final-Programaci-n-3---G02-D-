@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.luisdeveloper.billeteravirtualuq.viewController.VistaGenerarGraficos">
+    <children>
+        <TabPane prefWidth="600" prefHeight="400" layoutX="10" layoutY="10">
+            <!-- Tab 1: Gastos más comunes -->
+            <tabs>
+                <Tab text="Gastos más comunes">
+                    <AnchorPane>
+                        <children>
+                            <BarChart fx:id="barChartGastos" layoutX="10" layoutY="10" prefWidth="580" prefHeight="350">
+                                <xAxis>
+                                    <CategoryAxis fx:id="xAxisGastos" label="Categorías de Gastos" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis fx:id="yAxisGastos" label="Monto" />
+                                </yAxis>
+                            </BarChart>
+                        </children>
+                    </AnchorPane>
+                </Tab>
+
+                <!-- Tab 2: Usuarios con más transacciones -->
+                <Tab text="Usuarios con más transacciones">
+                    <AnchorPane>
+                        <children>
+                            <PieChart fx:id="pieChartUsuarios" layoutX="10" layoutY="10" prefWidth="580" prefHeight="350" />
+                        </children>
+                    </AnchorPane>
+                </Tab>
+
+                <!-- Tab 3: Saldo promedio de usuarios -->
+                <Tab text="Saldo promedio de usuarios">
+                    <AnchorPane>
+                        <children>
+                            <LineChart fx:id="lineChartSaldo" layoutX="10" layoutY="10" prefWidth="580" prefHeight="350">
+                                <xAxis>
+                                    <CategoryAxis fx:id="xAxisSaldo" label="Usuarios" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis fx:id="yAxisSaldo" label="Saldo Promedio" />
+                                </yAxis>
+                            </LineChart>
+                        </children>
+                    </AnchorPane>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>

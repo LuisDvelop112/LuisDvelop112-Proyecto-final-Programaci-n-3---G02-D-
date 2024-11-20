@@ -12,7 +12,6 @@ module com.luisdeveloper.billeteravirtualuq {
     requires org.apache.poi.ooxml.schemas;
     requires org.apache.pdfbox;
 
-
     opens com.luisdeveloper.billeteravirtualuq to javafx.fxml;
     exports com.luisdeveloper.billeteravirtualuq;
     exports com.luisdeveloper.billeteravirtualuq.viewController;

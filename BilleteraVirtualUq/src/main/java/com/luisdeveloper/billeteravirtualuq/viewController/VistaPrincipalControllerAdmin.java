@@ -21,8 +21,6 @@ public class VistaPrincipalControllerAdmin {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/com/luisdeveloper/billeteravirtualuq/VistaGestionarCuentasAdmin.fxml"));
             Parent root = loader.load();
-            VistaActualizarPerfilController controller = loader.getController();
-            controller.setIdUsuario(idUsuario);
             Stage stage = new Stage();
             stage.setTitle("Editar Perfil");
             stage.setScene(new Scene(root));
@@ -43,12 +41,10 @@ public class VistaPrincipalControllerAdmin {
     private void gestionarUsuarios(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/com/luisdeveloper/billeteravirtualuq/VistaActualizarPerfil.fxml"));
+                    getClass().getResource("/com/luisdeveloper/billeteravirtualuq/VistaGestionarUsuariosAdmin.fxml"));
             Parent root = loader.load();
-            VistaActualizarPerfilController controller = loader.getController();
-            controller.setIdUsuario(idUsuario);
             Stage stage = new Stage();
-            stage.setTitle("Editar Perfil");
+            stage.setTitle("Gestionar Usuarios");
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
@@ -67,12 +63,10 @@ public class VistaPrincipalControllerAdmin {
     private void gestionarTransacciones(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/com/luisdeveloper/billeteravirtualuq/VistaActualizarPerfil.fxml"));
+                    getClass().getResource("/com/luisdeveloper/billeteravirtualuq/VistaGestionarTransaccionesAdmin.fxml"));
             Parent root = loader.load();
-            VistaActualizarPerfilController controller = loader.getController();
-            controller.setIdUsuario(idUsuario);
             Stage stage = new Stage();
-            stage.setTitle("Editar Perfil");
+            stage.setTitle("Gestionar Transacciones");
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {
@@ -95,6 +89,27 @@ public class VistaPrincipalControllerAdmin {
             Parent root = loader.load();
             VistaActualizarPerfilController controller = loader.getController();
             controller.setIdUsuario(idUsuario);
+            Stage stage = new Stage();
+            stage.setTitle("Editar Perfil");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarAlerta(Alert.AlertType.ERROR, "Error",
+                    "No se pudo abrir la ventana de registro. Verifique la ruta del archivo FXML.");
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            mostrarAlerta(Alert.AlertType.ERROR, "Error",
+                    "Archivo FXML no encontrado. Verifique la ubicación de RegistroView.fxml.");
+        }
+    }
+
+    @FXML
+    private void generarGraficos(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/com/luisdeveloper/billeteravirtualuq/VistaGenerarGraficos.fxml"));
+            Parent root = loader.load();
             Stage stage = new Stage();
             stage.setTitle("Editar Perfil");
             stage.setScene(new Scene(root));

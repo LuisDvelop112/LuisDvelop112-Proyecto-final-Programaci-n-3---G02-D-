@@ -8,5 +8,6 @@
       <Button layoutX="82.0" layoutY="90.0" mnemonicParsing="false" onAction="#gestionarCuentas" text="Gestionar cuentas" />
       <Button layoutX="406.0" layoutY="90.0" mnemonicParsing="false" onAction="#gestionarUsuarios" text="Gestionar usuarios" />
       <Button layoutX="229.0" layoutY="90.0" mnemonicParsing="false" onAction="#gestionarTransacciones" text="Gestionar transacciones" />
+      <Button layoutX="245.0" layoutY="158.0" mnemonicParsing="false" onAction="#generarGraficos" text="Generar Graficos" />
    </children>
 </AnchorPane>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="734.0" prefWidth="600.0" spacing="10" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luisdeveloper.billeteravirtualuq.viewController.GestionarTransaccionesAdminController">
+    <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Gestión de Transacciones" />
+
+    <Label text="ID Transacción:" />
+    <TextField fx:id="idTransaccion" promptText="Ingrese el ID de la transacción" />
+
+    <Label text="Id usuario:" />
+    <TextField fx:id="idUsuario" promptText="Ingrese el Id del Usuario" />
+
+    <Label text="Tipo de Transacción:" />
+    <TextField fx:id="tipoTransaccion" promptText="Ingrese el tipo de transacción" />
+
+    <Label text="Monto:" />
+    <TextField fx:id="monto" promptText="Ingrese el monto" />
+
+    <Label text="Descripción:" />
+    <TextField fx:id="descripcion" promptText="Ingrese una descripción" />
+
+    <Label text="Cuenta Origen:" />
+    <TextField fx:id="cuentaOrigen" promptText="Ingrese la cuenta de origen" />
+
+    <Label text="Cuenta Destino:" />
+    <TextField fx:id="cuentaDestino" promptText="Ingrese la cuenta de destino" />
+
+    <HBox alignment="CENTER" spacing="10">
+        <Button onAction="#crearTransaccion" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Crear Transacción" />
+    </HBox>
+
+    <!-- Tabla para mostrar las transacciones -->
+    <TableView fx:id="transaccionesTable" prefWidth="600">
+        <columns>
+            <TableColumn fx:id="tipoColumn" prefWidth="200" text="Tipo de Transacción" />
+            <TableColumn fx:id="montoColumn" prefWidth="150" text="Monto" />
+            <TableColumn fx:id="fechaColumn" prefWidth="250" text="Fecha" />
+        </columns>
+    </TableView>
+</VBox>
