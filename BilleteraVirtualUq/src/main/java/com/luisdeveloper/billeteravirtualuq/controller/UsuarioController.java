@@ -2,6 +2,7 @@ package com.luisdeveloper.billeteravirtualuq.controller;
 
 import com.luisdeveloper.billeteravirtualuq.exceptions.UsuarioNoEncontradoException;
 import com.luisdeveloper.billeteravirtualuq.mapping.dto.UsuarioDto;
+import com.luisdeveloper.billeteravirtualuq.model.Usuario;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class UsuarioController {
         return modelFactoryController.obtenerUsuario(idUsuario);
     }
 
-    public List<UsuarioDto> obtenerTodosUsuarios() {
+    public List<Usuario> obtenerTodosUsuarios() {
         return modelFactoryController.obtenerTodosUsuarios();
     }
 

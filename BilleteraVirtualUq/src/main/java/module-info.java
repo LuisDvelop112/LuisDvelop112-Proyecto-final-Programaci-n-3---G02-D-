@@ -8,6 +8,10 @@ module com.luisdeveloper.billeteravirtualuq {
     requires java.sql;
     requires java.net.http;
     requires com.fasterxml.jackson.databind;
+    requires org.apache.poi.ooxml;
+    requires org.apache.poi.ooxml.schemas;
+    requires org.apache.pdfbox;
+
 
     opens com.luisdeveloper.billeteravirtualuq to javafx.fxml;
     exports com.luisdeveloper.billeteravirtualuq;
@@ -17,4 +21,7 @@ module com.luisdeveloper.billeteravirtualuq {
     exports com.luisdeveloper.billeteravirtualuq.mapping.dto;
     exports com.luisdeveloper.billeteravirtualuq.mapping.mappers;
     exports com.luisdeveloper.billeteravirtualuq.model;
+
+    // Asegura que Jackson pueda acceder a los paquetes de datos si es necesario
+    opens com.luisdeveloper.billeteravirtualuq.model to com.fasterxml.jackson.databind;
 }

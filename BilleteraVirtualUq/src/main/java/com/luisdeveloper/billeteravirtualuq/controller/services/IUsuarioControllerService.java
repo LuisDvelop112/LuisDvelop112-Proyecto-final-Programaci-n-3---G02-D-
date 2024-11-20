@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.luisdeveloper.billeteravirtualuq.exceptions.UsuarioNoEncontradoException;
 import com.luisdeveloper.billeteravirtualuq.mapping.dto.UsuarioDto;
+import com.luisdeveloper.billeteravirtualuq.model.Usuario;
 
 public interface IUsuarioControllerService {
     
@@ -19,7 +20,7 @@ public interface IUsuarioControllerService {
 
     double obtenerSaldo(String idUsuario);
 
-    public List<UsuarioDto> obtenerTodosUsuarios();
+    public List<Usuario> obtenerTodosUsuarios();
 
     public boolean actualizarSaldo(String idUsuario, double nuevoSaldo);
 

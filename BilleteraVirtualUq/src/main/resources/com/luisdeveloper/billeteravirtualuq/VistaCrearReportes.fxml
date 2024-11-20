@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luisdeveloper.billeteravirtualuq.viewController.VistaReportesController">
+<AnchorPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.luisdeveloper.billeteravirtualuq.viewController.VistaReportesController"
+            maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
+            prefHeight="400.0" prefWidth="600.0">
+   
    <children>
-      <Text layoutX="200.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Generar Reporte" />
-      <Text layoutX="100.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione las opciones de reporte:" />
-      <CheckBox fx:id="cbTransacciones" layoutX="150.0" layoutY="140.0" text="Transacciones" />
-      <CheckBox fx:id="cbPresupuestos" layoutX="150.0" layoutY="180.0" text="Presupuestos" />
-      <CheckBox fx:id="cbCuentas" layoutX="150.0" layoutY="220.0" text="Cuentas" />
-      <Button layoutX="200.0" layoutY="300.0" mnemonicParsing="false" onAction="#generarReporte" text="Generar Reporte" />
-      <Button layoutX="350.0" layoutY="300.0" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+      <!-- Título del Reporte -->
+      <ComboBox fx:id="reportTypeComboBox" layoutX="61.0" layoutY="50.0" prefWidth="150.0" promptText="Tipo de Reporte">
+      </ComboBox>
+
+      <!-- Fecha de Inicio -->
+      <DatePicker fx:id="startDatePicker" layoutX="374.0" layoutY="50.0" promptText="Fecha de Inicio"/>
+
+      <!-- Fecha de Fin -->
+      <DatePicker fx:id="endDatePicker" layoutX="374.0" layoutY="120.0" promptText="Fecha de Fin"/>
+
+      <!-- Generar Reporte -->
+      <Button fx:id="generateReportButton" layoutX="242.0" layoutY="293.0" mnemonicParsing="false" text="Generar Reporte"/>
+
+      <!-- Opción adicional de reporte -->
+      <ComboBox fx:id="secondReportTypeComboBox" layoutX="61.0" layoutY="120.0" prefWidth="150.0" promptText="Seleccionar Reporte">
+      </ComboBox>
+
    </children>
 </AnchorPane>

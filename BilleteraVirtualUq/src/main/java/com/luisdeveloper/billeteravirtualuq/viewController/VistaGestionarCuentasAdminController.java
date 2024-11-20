@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.luisdeveloper.billeteravirtualuq.controller.CuentaController;
@@ -12,7 +11,6 @@ import com.luisdeveloper.billeteravirtualuq.controller.UsuarioController;
 import com.luisdeveloper.billeteravirtualuq.exceptions.CuentaException;
 import com.luisdeveloper.billeteravirtualuq.exceptions.UsuarioNoEncontradoException;
 import com.luisdeveloper.billeteravirtualuq.mapping.dto.CuentaDto;
-import com.luisdeveloper.billeteravirtualuq.mapping.dto.UsuarioDto;
 import com.luisdeveloper.billeteravirtualuq.model.Cuenta;
 
 import javafx.collections.FXCollections;
@@ -142,14 +140,6 @@ public class VistaGestionarCuentasAdminController {
     private void nuevoCuentaAction() {
         // Limpiar los campos para agregar una nueva cuenta
         limpiarCampos();
-    }
-
-    private void mostrarDetallesCuenta(Cuenta cuenta) {
-        // Mostrar los detalles de la cuenta seleccionada en los TextFields
-        txtCuentaId.setText(cuenta.getIdCuenta());
-        txtNombreBanco.setText(cuenta.getNombreBanco());
-        txtNumeroCuenta.setText(cuenta.getNumeroCuenta());
-        txtTipoCuenta.setText(cuenta.getTipoCuenta());
     }
 
     private void limpiarCampos() {

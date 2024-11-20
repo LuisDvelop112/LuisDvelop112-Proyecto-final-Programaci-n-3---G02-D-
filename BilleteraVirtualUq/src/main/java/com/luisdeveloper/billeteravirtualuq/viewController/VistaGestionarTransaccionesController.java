@@ -1,6 +1,5 @@
 package com.luisdeveloper.billeteravirtualuq.viewController;
 
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -12,8 +11,6 @@ import com.luisdeveloper.billeteravirtualuq.controller.UsuarioController;
 import com.luisdeveloper.billeteravirtualuq.model.Transaccion;
 import com.luisdeveloper.billeteravirtualuq.mapping.dto.CategoriaDto;
 import com.luisdeveloper.billeteravirtualuq.mapping.dto.TransaccionDto;
-import com.luisdeveloper.billeteravirtualuq.mapping.dto.UsuarioDto;
-
 import java.time.LocalDateTime;
 import java.util.List;
 

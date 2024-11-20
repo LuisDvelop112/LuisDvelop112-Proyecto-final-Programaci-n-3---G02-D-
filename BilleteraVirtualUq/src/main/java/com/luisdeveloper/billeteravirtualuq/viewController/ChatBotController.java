@@ -22,7 +22,7 @@ public class ChatBotController {
     @FXML
     private Button sendButton;
 
-    private static final String API_TOKEN = ""; // Reemplaza con tu token de Hugging Face
+    private static final String API_TOKEN = "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"; // Reemplaza con tu token de Hugging Face
     private static final String API_URL = "https://api-inference.huggingface.co/models/gpt2"; // Cambia por el modelo que desees usar
 
     private final HttpClient httpClient;

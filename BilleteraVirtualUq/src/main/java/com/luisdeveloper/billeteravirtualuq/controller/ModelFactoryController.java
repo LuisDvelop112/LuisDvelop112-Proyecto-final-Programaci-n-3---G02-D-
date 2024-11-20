@@ -16,7 +16,6 @@ import com.luisdeveloper.billeteravirtualuq.utils.BilleteraVirtualUqUtils;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ModelFactoryController implements IModelFactoryService {
 
@@ -181,14 +180,12 @@ public class ModelFactoryController implements IModelFactoryService {
         return false; // Retornar false si no se pudo eliminar
     }
 
-    public List<UsuarioDto> obtenerTodosUsuarios() {
+    public List<Usuario> obtenerTodosUsuarios() {
         if (billeteraVirtualUq != null) {
             // Obtener lista de usuarios y mapearla a UsuarioDto
             List<Usuario> listaUsuarios = billeteraVirtualUq.obtenerTodosUsuarios();
             registrarAccionesSistema("Consulta de todos los usuarios realizada", 1, "obtenerTodosUsuarios");
-            return listaUsuarios.stream()
-                    .map(mapper::usuarioToUsuarioDto) // Convertir cada Usuario a UsuarioDto
-                    .collect(Collectors.toList());
+            return listaUsuarios;
         } else {
             // Manejo del caso en que billeteraVirtualUq sea null
             registrarAccionesSistema("Error al consultar todos los usuarios: billeteraVirtualUq es null", 3,

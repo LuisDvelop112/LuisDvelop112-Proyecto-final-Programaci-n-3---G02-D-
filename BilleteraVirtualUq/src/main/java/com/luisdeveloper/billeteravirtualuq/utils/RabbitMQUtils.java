@@ -1,7 +1,6 @@
 package com.luisdeveloper.billeteravirtualuq.utils;
 
 import com.luisdeveloper.billeteravirtualuq.mapping.dto.TransaccionDto;
-import com.luisdeveloper.billeteravirtualuq.model.Transaccion;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;

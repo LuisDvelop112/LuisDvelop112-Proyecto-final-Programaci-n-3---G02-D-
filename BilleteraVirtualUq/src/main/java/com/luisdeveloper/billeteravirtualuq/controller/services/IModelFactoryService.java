@@ -13,6 +13,7 @@ import com.luisdeveloper.billeteravirtualuq.model.Categoria;
 import com.luisdeveloper.billeteravirtualuq.model.Cuenta;
 import com.luisdeveloper.billeteravirtualuq.model.Presupuesto;
 import com.luisdeveloper.billeteravirtualuq.model.Transaccion;
+import com.luisdeveloper.billeteravirtualuq.model.Usuario;
 
 public interface IModelFactoryService {
 
@@ -29,7 +30,7 @@ public interface IModelFactoryService {
 
     double obtenerSaldo(String idUsuario);
 
-    public List<UsuarioDto> obtenerTodosUsuarios();
+    public List<Usuario> obtenerTodosUsuarios();
 
     public boolean aumentarSaldo(String idUsuario, double nuevoSaldo);
 

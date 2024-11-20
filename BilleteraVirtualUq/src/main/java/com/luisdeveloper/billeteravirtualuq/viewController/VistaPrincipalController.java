@@ -49,6 +49,8 @@ public class VistaPrincipalController {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("/com/luisdeveloper/billeteravirtualuq/VistaCrearReportes.fxml"));
             Parent root = loader.load();
+            VistaReportesController controller = loader.getController();
+            controller.setIdUsuario(idUsuario);
             Stage stage = new Stage();
             stage.setTitle("Crear Reportes");
             stage.setScene(new Scene(root));
